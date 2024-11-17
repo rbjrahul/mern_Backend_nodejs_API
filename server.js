@@ -48,9 +48,7 @@ mongoose
     `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}@cluster0.sn6fu.mongodb.net/${process.env.DB_NAME}?retryWrites=true&w=majority&appName=Cluster0`
   )
   .then(() => {
-    app.listen(port, () => {
-      console.log(`API is running at http://localhost:${port}`);
-    });
+    app.listen(process.env.PORT || port);
   })
   .catch((err) => {
     console.log(err);
