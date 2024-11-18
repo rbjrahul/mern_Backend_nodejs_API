@@ -41,11 +41,14 @@ app.use((error, req, res, next) => {
   res.status(error.code || 500);
   res.json({ message: error.message || "An unknown error occurred" });
 });
-
+// console.log(process.env.DB_USER);
+// console.log(process.env.DB_PASSWORD);
+// console.log(process.env.DB_NAME);
 // MongoDB connection
 mongoose
   .connect(
     `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}@cluster0.sn6fu.mongodb.net/${process.env.DB_NAME}?retryWrites=true&w=majority&appName=Cluster0`
+    //`mongodb+srv://rjrahul:4ImjFpjtRSRG1bHc@cluster0.sn6fu.mongodb.net/MERN?retryWrites=true&w=majority&appName=Cluster0`
   )
   .then(() => {
     app.listen(process.env.PORT || port);
