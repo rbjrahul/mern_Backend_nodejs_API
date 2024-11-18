@@ -54,5 +54,9 @@ mongoose
     app.listen(process.env.PORT || port);
   })
   .catch((err) => {
-    console.log(err);
+    console.log( err +
+        process.env.DB_NAME +
+        process.env.DB_USER +
+        process.env.DB_PASSWORD +
+        process.env.JWT_KEY);
   });
