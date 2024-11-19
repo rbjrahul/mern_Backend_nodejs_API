@@ -62,7 +62,7 @@ const signup = async (req, res, next) => {
   const createdUser = new User({
     name,
     email,
-    image: "http://localhost:5000/" + req.file.path,
+    image: req.file.path,
     password: hashedPassword,
     places: [],
   });
