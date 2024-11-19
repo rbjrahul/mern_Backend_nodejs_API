@@ -66,7 +66,7 @@ const signup = async (req, res, next) => {
     password: hashedPassword,
     places: [],
   });
-  // console.log(createdUser);
+
   try {
     await createdUser.save();
   } catch (err) {
@@ -81,7 +81,7 @@ const signup = async (req, res, next) => {
   try {
     token = jwt.sign(
       { userId: createdUser.id, email: createdUser.email },
-      process.env.JWT_KEY,
+      "supersecret_dont_share",
       { expiresIn: "1h" }
     );
   } catch (err) {
@@ -96,7 +96,6 @@ const signup = async (req, res, next) => {
     .status(201)
     .json({ userId: createdUser.id, email: createdUser.email, token: token });
 };
-
 const login = async (req, res, next) => {
   const { email, password } = req.body;
 
